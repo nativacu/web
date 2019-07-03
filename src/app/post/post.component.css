@@ -1,0 +1,7 @@
+.btnSubmit{
+    width: 15%;
+    border-radius: 0.2rem;
+    padding: 1.0%;
+    border: none;
+    cursor: pointer;
+}

@@ -1,0 +1,64 @@
+
+
+<div class="container login-container">
+            <div class="row">
+                <div class="col-md-6 login-form-1">
+                    <h3>Log In</h3>
+                    <!-- <form #logForm="ngForm" (ngSubmit)="onSubmitLogin()"> -->
+                        <div class="form-group">
+                            <input type="email" #log_mail class="form-control" name="email" placeholder="Email" required/>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" #log_pass class="form-control" placeholder="Password" required />
+                        </div>
+
+                        <div class="form-group">
+                            <a href="#" class="ForgetPwd">Forgot Password?</a>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="submit" (click)="onSubmitLogin()" class="btnSubmit" value="Login" />
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <!-- <button style="font-size:24px" class="btn btn-danger" (click)="gLogin()"> <i class="fa fa-google"></i></button>      -->
+                        </div>
+                       
+                    <!-- </form> -->
+                </div>
+                <div class="col-md-6 login-form-2"  > 
+                     <!-- #regForm="ngForm"  -->
+                    <h3>Sign Up</h3>
+                    <!-- <form  (ngSubmit)="onSubmit()" #regForm="ngForm"> -->
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="email" placeholder="Email" required #email/>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control"  placeholder="Password" required #password />
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" name="first_name" id="first_name" ngModel class="form-control" placeholder="First Name" #f_name required>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" name="last_name" id="last_name" class="form-control" placeholder="Last Name" #l_name required>
+                        </div>
+
+                        <label for="select">Account Type:</label>
+                        <select #type class="form-control" id="select">
+                          <option>Poster</option>
+                          <option>User</option>
+                        </select>
+
+                        <div class="form-group">
+                            <input type="submit" (click)="onSubmit()" class="btnSubmit" value="Sign Up" />
+                        </div>
+
+                        
+                    <!-- </form> -->
+                </div>
+            </div>
+        </div>
