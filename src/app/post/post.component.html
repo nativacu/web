@@ -1,61 +1,90 @@
 <div class="container" style="margin-top: 1%;">
 
     <h1>Post a Job</h1>
-
+    
+    <form id="Post">
+    <div class="form-group">
     <label for="select">Category</label>
-                        <select #cat class="form-control" id="select">
-                          <option>Design</option>
-                          <option>Programming</option>
-                        </select>
+        <select #cat class="form-control" id="select" >
+                <option *ngFor="let cat of categories">{{cat}}<option>
+        </select>
+    </div>
+
+    <label>Company</label>
+    <div class="form-group">
+        <input #company type="text" class="form-control" name="company" placeholder="" required> 
+    </div>
+    
+    <label>Type</label>
+    <div class="form-group">
+       
+            <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" class="custom-control-input" id="defaultInline1" value="full-time" name="inlineDefaultRadios" [(ngModel)]="inlineDefaultRadios" mdbInput>
+                    <label class="custom-control-label" for="defaultInline1">Full Time</label>
+                </div>
+                  
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" class="custom-control-input" id="defaultInline2" value="part-time" name="inlineDefaultRadios" [(ngModel)]="inlineDefaultRadios" mdbInput>
+                    <label class="custom-control-label" for="defaultInline2">Part Time</label>
+                </div>
+                  
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" class="custom-control-input" id="defaultInline3" value="freelance" name="inlineDefaultRadios" [(ngModel)]="inlineDefaultRadios" mdbInput>
+                    <label class="custom-control-label" for="defaultInline3">Freelance</label>
+                </div>
+        <!-- <img src="https://firebasestorage.googleapis.com/v0/b/job-hunt-aba5f.appspot.com/o/glyph-logo_May2016.png?alt=media&token=cb422467-a94e-40ce-8d8b-0d8462a1dcc0"> -->
+    </div>   
+
+    <label>Description</label>
+    <div class="form-group">
+        <textarea #desc type="text" class="form-control" name="description" placeholder="" required></textarea>
+    </div>
+
+    <label>Address</label>
+    <div class="form-group">
+        <input #add type="address" class="form-control" placeholder="" required />
+    </div>
+
+    <label>Position</label>
+    <div class="form-group">
+            <input #position type="text" #position class="form-control" placeholder="" required />
+    </div>
 
     <div class="form-group">
-        <input #company type="text" class="form-control" name="company" placeholder="Company" required>
+        <label>Logo (optional)</label>
+        <label class="image-upload-container btn btn-bwm">
+            <input #imageInput
+                type="file"
+                accept="image/*">
+        </label>
     </div>
     
     <div class="form-group">
-        <label >Type</label>     
-        <div inline>
-            <div margin-right>
-            <label class="radio-inline">
-                <input type="radio" value="full_time" name="type" [(ngModel)]="f_t">
-                Full Time
-            </label>
-
-            <label class="radio-inline">
-                    <input type="radio" value="part_time" name="type" [(ngModel)]="p_t">
-                    Part Time
-                </label>
-
-                <label class="radio-inline">
-                        <input type="radio" value="free" name="type" [(ngModel)]="f">
-                        Freelance
-                    </label>
-
-        </div>
-
-            
-        </div>   
+        <label>URL (optional)</label>
+        <input type="url" #url class="form-control"  />
     </div>
+
+    <div *ngIf="this.successfull" class="alert alert-success" role="alert">
+            Job posted successfully 
+          </div>
 
     <div class="form-group">
-        <textarea #desc type="text" class="form-control" name="description" placeholder="Description" required></textarea>
+        <input type="submit" (click)="onSubmit(cat.value,company.value,desc.value,add.value,position.value,inlineDefaultRadios,url.value, imageInput.files)" class="btnSubmit" value="Post" />
     </div>
 
-    <div class="form-group">
-        <input #add type="address" class="form-control" placeholder="Location" required />
-    </div>
+   
 
-    <div class="form-group">
-            <input #position type="text" #position class="form-control" placeholder="Position" required />
-    </div>
+    </form>
 
-    <div class="form-group">
-        <input type="url" #url class="form-control" placeholder="URL" required />
-    </div>
-
-    <div class="form-group">
-        <input type="submit" (click)="onSubmit(cat.value,url.value,url.value,desc.value,add.value,position.value,url.value)" class="btnSubmit" value="Post" />
-    </div>
-
+    
 <!-- category, company, description, location, position, type, url?, logo? -->
 </div>
+
+<!-- category:string;
+    type: string;
+    logo: string;
+    company:string;
+    description:string;
+    location:string; 
+    position:string; 
+    url:string; -->

@@ -15,6 +15,8 @@ import {AuthService} from './auth.service';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { FormsModule} from '@angular/forms';
 import { PostComponent } from './post/post.component';
+import { JobinfoComponent } from './jobinfo/jobinfo.component';
+import { AllJobsComponent } from './all-jobs/all-jobs.component';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import { PostComponent } from './post/post.component';
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    PostComponent
+    PostComponent,
+    JobinfoComponent,
+    AllJobsComponent
   ],
   imports: [
     BrowserModule,

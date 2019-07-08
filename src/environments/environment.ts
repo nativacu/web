@@ -9,7 +9,7 @@ export const environment = {
     authDomain: "job-hunt-aba5f.firebaseapp.com",
     databaseURL: "https://job-hunt-aba5f.firebaseio.com",
     projectId: "job-hunt-aba5f",
-    storageBucket: "",
+    storageBucket: "gs://job-hunt-aba5f.appspot.com/",
     messagingSenderId: "628851106318",
     appId: "1:628851106318:web:150c774c3fbf5937"
   }

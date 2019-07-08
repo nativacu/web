@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Job } from '../job.model';
 import {DatabaseService} from '../database.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-post',
@@ -9,17 +10,61 @@ import {DatabaseService} from '../database.service';
 })
 export class PostComponent implements OnInit {
 
-  constructor(public db: DatabaseService) { }
+  categories = ['Design','Programming'];
+  selectedFile: File;
+  successfull = false;
+
+  constructor(public db: DatabaseService, private router: Router) { }
 
   ngOnInit() {
   }
 
-  onSubmit(cat:string,radio:string,type:string,desc:string,add:string,position:string,url:string){
 
-    let job = new Job(cat,radio,type,desc,add,position,url);
+  onSubmit(cat:string, company:string, description:string, location:string, position:string, type:string, url:string, image){
+    let job = new Job(cat,company,description,location,position,type);
+    console.log(type);
+    if(cat && company && type && description && location && position){
+     // <!-- category, company, description, location, position, type, url?, logo? -->
+      if(image){
+       
+        this.db.pushUpload(image[0].name, image[0]);
+        //this.db.imgObs.subscribe((src)=>{
+         job.setImage( this.db.imgObs);
+        //});
+
+      }
   
-    console.log(cat,radio,type,desc,add,position,url);
-    this.db.addJob(job);
+      if(url){
+        job.setURL(url);
+      }
 
+      this.db.addJob(job);
+      this.successfull = true;
+
+      let rout = this.router;
+      let form = document.getElementById("Post");
+      form.reset();
+    
+      setTimeout( function () {
+        rout.navigateByUrl('home');
+      }, 2000);
+    }
+
+    else{
+      window.alert("Please fill all required fields");
+    }
+
+   
   }
+
+  
+  processFile(file){
+    console.log(file[0]);
+  
+
+   
+  }
+
+  
+
 }

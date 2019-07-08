@@ -1,7 +1,6 @@
 import { Component, OnInit, NgZone, ViewChild, ElementRef } from '@angular/core';
 import {AuthService} from '../auth.service';
 import { Router } from '@angular/router';
-import { FormsModule, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -50,7 +49,7 @@ export class LoginComponent implements OnInit {
       accountType: type
     }
     
-      this.auth.emailLogin(email,password,data).then(() => {
+    this.auth.emailLogin(email,password,data).then(() => {
         this.router.navigateByUrl('/home');
     }).catch((err)=>{
       window.alert(err);  
